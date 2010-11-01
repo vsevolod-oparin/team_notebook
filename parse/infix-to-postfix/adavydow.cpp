@@ -1,29 +1,23 @@
 #include <iostream>
 #include <stack>
 using namespace std;
+char priority[256];
 
-int operatorPriority(char c) {
-  switch (c) {
-  case '^':
-    return 5;
-  case '/':
-    return 4;
-  case '*':
-    return 3;
-  case '-':
-    return 2;
-  case '+':
-    return 1;
-  default:
-    return -1;
-  }
+void prepare() {
+    memset(priority, -1, 256);
+	priority['^'] = 5;
+	priority['/'] = 4;
+	priority['*'] = 3;
+	priority['-'] = 2;
+	priority['+'] = 1;		
 }
 
 bool isOperator(char c) {
-  return operatorPriority(c) >= 0;
+  return priority[c] >= 0;
 }
 
 int proceedTestCase() {
+  prepare();
   string var;
   cin >> var;
   stack<char> stck;
@@ -38,7 +32,7 @@ int proceedTestCase() {
       }
       stck.pop();
     } else if (isOperator(c)) {
-      for(; !stck.empty() && stck.top() != '(' && operatorPriority(stck.top()) >= operatorPriority(c); stck.pop()) {
+      for(; !stck.empty() && stck.top() != '(' && priority[stck.top()] >= priority[c]; stck.pop()) {
 	ans.push_back(stck.top());
       }
       stck.push(c);
