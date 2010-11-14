@@ -10,13 +10,17 @@ class Deque{
   int end;
 public:
   void PushFront(int x) {
-    arr[--begin] = x;
-    if (begin == -1) begin = N - 1;
+    if (--begin == -1) {
+      begin = N - 1;
+    }
+    arr[begin] = x;
   }
 
   void PushBack(int x) {
-    arr[end++] = x;
-    if (end == N) end = 0;
+    if (end++ == N) { 
+      end = 0;
+    }
+    arr[end - 1] = x;
   }
 
   bool Empty() {
@@ -24,13 +28,17 @@ public:
   }
 
   int PopFront() {
-    return arr[begin++];
-    if (begin == N) begin = 0;
+    if (++begin == N) {
+      begin = 0;
+    }
+    return arr[begin - 1];
   }
 
   int PopBack() {
-    return arr[--end];
-    if (end == -1) end = N - 1;
+    if (--end == -1) {
+      end = N - 1;
+    }
+    return arr[end];
   }
 
   void Clear() {
