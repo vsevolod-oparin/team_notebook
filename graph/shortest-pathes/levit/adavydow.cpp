@@ -11,12 +11,16 @@ class Deque{
 public:
   void PushFront(int x) {
     arr[--begin] = x;
-    if (begin == -1) begin = N - 1;
+    if (begin == -1) {
+      begin = N - 1;
+    }
   }
 
   void PushBack(int x) {
     arr[end++] = x;
-    if (end == N) end = 0;
+    if (end == N) { 
+      end = 0;
+    }
   }
 
   bool Empty() {
@@ -24,12 +28,16 @@ public:
   }
 
   int PopFront() {
-    if (++begin == N) begin = 0;
+    if (++begin == N) {
+      begin = 0;
+    }
     return arr[begin - 1];
   }
 
   int PopBack() {
-    if (--end == -1) end = N - 1;
+    if (--end == -1) {
+      end = N - 1;
+    }
     return arr[end];
   }
 
