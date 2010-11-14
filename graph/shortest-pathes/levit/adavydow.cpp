@@ -10,17 +10,17 @@ class Deque{
   int end;
 public:
   void PushFront(int x) {
-    arr[--begin] = x;
-    if (begin == -1) {
+    if (--begin == -1) {
       begin = N - 1;
     }
+    arr[begin] = x;
   }
 
   void PushBack(int x) {
-    arr[end++] = x;
-    if (end == N) { 
+    if (end++ == N) { 
       end = 0;
     }
+    arr[end - 1] = x;
   }
 
   bool Empty() {
