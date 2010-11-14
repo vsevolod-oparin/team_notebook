@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
-#include <windows.h>
+#include <ctime>
 
 #define FOR(i,a,b) for (int i = (a); i < (b); ++i)
 
@@ -109,9 +109,9 @@ int main()
   //cin >> s;
   int sum = 0;
   for (int i = 0; i < step; i++) {
-    int time = GetTickCount();
+    int time = clock();
     int* suff = sort(s);
-    int res = GetTickCount() - time;
+    int res = clock() - time;
     sum += res;
     delete[] suff;
   }
