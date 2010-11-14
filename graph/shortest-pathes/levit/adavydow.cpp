@@ -24,13 +24,13 @@ public:
   }
 
   int PopFront() {
-    return arr[begin++];
-    if (begin == N) begin = 0;
+    if (++begin == N) begin = 0;
+    return arr[begin - 1];
   }
 
   int PopBack() {
-    return arr[--end];
-    if (end == -1) end = N - 1;
+    if (--end == -1) end = N - 1;
+    return arr[end];
   }
 
   void Clear() {
