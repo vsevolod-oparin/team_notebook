@@ -34,6 +34,7 @@ bool readData() {
     cin >> a >> b >> f >> c;
     a--; b--;
     cost[a][b] = c;
+    cost[b][a] = -c;
     capacity[a][b] = f;
   }
   return true;
