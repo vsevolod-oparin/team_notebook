@@ -40,14 +40,14 @@ bool readData() {
 }
 
 void printAnswer() {
-  cout << maxFlow << endl;
+  cout << maxFlowCost << endl;
 }
 
 void runFlow(int i) {
   if (i == start) return;
   flow[i][prev[i]] -= suppFlow[end];
   flow[prev[i]][i] += suppFlow[end];
-  maxFlow += cost[prev[i]][i] * suppFlow[end];
+  maxFlowCost += cost[prev[i]][i] * suppFlow[end];
   runFlow(prev[i]);
 }
 
