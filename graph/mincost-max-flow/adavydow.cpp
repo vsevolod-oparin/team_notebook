@@ -3,7 +3,7 @@
 #include<utility>
 using namespace std;
 
-int start, end, maxFlow, n;
+int start, end, maxFlowCost, n;
 const int INF = 1000000000;
 vector< vector<int> > cost;
 vector< vector<int> > capacity;
@@ -100,7 +100,7 @@ bool dijkstra() {
 }
 
 void processTestCase() {
-  maxFlow = 0;
+  maxFlowCost = 0;
   potential.resize(n);
   flow.resize(n);
   for (int i = 0; i < n; i++) {
