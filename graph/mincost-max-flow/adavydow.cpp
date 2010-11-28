@@ -88,8 +88,8 @@ bool dijkstra() {
   prev.assign(n, -1);
   dist.assign(n, INF);
   visited.assign(n, false);
-  dist[0] = 0;
-  suppFlow[0] = INF;
+  dist[start] = 0;
+  suppFlow[start] = INF;
   while (true) {
     int i = findNearest();
     if (i == -1) break;
