@@ -18,7 +18,7 @@ int* zfunc(const char* s, int len) {
 	for (int i = 1; i < len; ++i) { // [i, ls)
 		int j = i >= right ? i : min(i + z[i - left], len);		
 		for (; s[j] == s[j - i] && j < len; ++j)
-				;
+			;
 		z[i] = j - i; 
 		if (j >= right) {
 			left = i;
@@ -67,13 +67,6 @@ bool check(int rank, int s0, int s1, int* z, int* rz) {
 	for (int i = rank - 1; i > 2 && ok; i -= 2) {
 		ok &= isBorder(getFib(i - 2, s0, s1), getFib(i, s0, s1), rz);		
 	}
-	if (rank % 2 == 0) {
-		memcpy(S0, s, s0);
-		memcpy(S1, s + s0, s1);
-	} else {	
-		memcpy(S1, s, s1);
-		memcpy(S0, s + s1, s0);
-	}
 	return ok;
 }
 
@@ -94,6 +87,13 @@ int main() {
 			int f1 = resolve(ls, n, f0);
 			if (f1 > 0) {
 				if (check(n, f0, f1, z, rz)) {
+					if (n % 2 == 0) {
+						memcpy(S0, s, s0);
+						memcpy(S1, s + s0, s1);
+					} else {	
+						memcpy(S1, s, s1);
+						memcpy(S0, s + s1, s0);
+					}
 					printf("%d\n", n);
 					printf("%s %s", S0, S1);	
 					
