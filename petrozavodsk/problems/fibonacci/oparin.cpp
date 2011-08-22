@@ -43,7 +43,7 @@ int getFib(int n, int s0, int s1) {
 	return F[n - 2] * s0 + F[n - 1] * s1;
 }
 
-int resolve(int val, int n, int s0) {
+int getSecondSeed(int val, int n, int s0) {
 	int tmp = val - F[n - 2] * s0;
 	return tmp % F[n - 1] == 0 ? tmp / F[n - 1] : -1;
 }
@@ -84,7 +84,7 @@ int main() {
 
 	for (int n = rank(ls); n > 2; --n) {
 		for (int f0 = 1; getFib(n, f0, 0) <= ls; ++f0) {
-			int f1 = resolve(ls, n, f0);
+			int f1 = getSecondSeed(ls, n, f0);
 			if (f1 > 0) {
 				if (check(n, f0, f1, z, rz)) {
 					if (n % 2 == 0) {
