@@ -88,11 +88,11 @@ int main() {
 			if (f1 > 0) {
 				if (check(n, f0, f1, z, rz)) {
 					if (n % 2 == 0) {
-						memcpy(S0, s, s0);
-						memcpy(S1, s + s0, s1);
+						memcpy(S0, s, f0);
+						memcpy(S1, s + f0, f1);
 					} else {	
-						memcpy(S1, s, s1);
-						memcpy(S0, s + s1, s0);
+						memcpy(S1, s, f1);
+						memcpy(S0, s + f1, f0);
 					}
 					printf("%d\n", n);
 					printf("%s %s", S0, S1);	
